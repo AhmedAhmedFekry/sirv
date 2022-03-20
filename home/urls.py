@@ -1,13 +1,14 @@
 
-from django.urls import path,include
-from home.views import access, accessTem,search,account_infomation,get_userss,get_spins_viewss
+from django.urls import path, include
+from home.views import access, accessTem, search, account_infomation, get_userss, get_spins_viewss, upload_file
 urlpatterns = [
-    path('',access ),
-    path('template/',accessTem ),
-    path('search/',search ),
-        path('account/',account_infomation ),
-         path('get_users/',get_userss ),
-          path('get_spins_views/',get_spins_viewss ),
+    path('', access),
+    path('template/', accessTem),
+    path('search/', search),
+    path('account/', account_infomation),
+    path('get_users/', get_userss),
+    path('get_spins_views/', get_spins_viewss),
+    path('upload_file/', upload_file),
 
 
 
