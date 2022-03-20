@@ -19,31 +19,33 @@ def access(request):
 
 
 
-access_token = get_access(clientId, clientSecret)['token']
+access_token1 = get_access(clientId, clientSecret)['token']
 
 def accessTem(request):
 
     upload_path = '/myfolder/'
+    access_token1 = get_access(clientId, clientSecret)['token']
     if request.method=="POST":
-        upload_files(access_token, request.FILES['file_upload'], upload_path)
+        upload_files(access_token1, request.FILES['file_upload'], upload_path)
     
     return render(request, 'form.html')
 
 @api_view(['GET'])
 def get_userss(request):
-    data=get_users(access_token)
+    data=get_users(access_token1)
     return Response(data.json(),status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
 def search(request):
-    data=search_files(access_token)
+    access_token1 = get_access(clientId, clientSecret)['token']
+    data=search_files(access_token1)
     return Response(data.json(),status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
 def  account_infomation(request):
-    data= account_info(access_token)
+    data= account_info(access_token1)
     print("the tpe of ",type(data))
     print("the tpe of ",data.json())
     return Response(data.json(),status=status.HTTP_200_OK)
@@ -51,5 +53,6 @@ def  account_infomation(request):
 
 @api_view(['GET'])
 def get_spins_viewss(request):
-    data=get_spins_views(access_token)
+    access_token1 = get_access(clientId, clientSecret)['token']
+    data=get_spins_views(access_token1)
     return Response(data.json(),status=status.HTTP_200_OK)
